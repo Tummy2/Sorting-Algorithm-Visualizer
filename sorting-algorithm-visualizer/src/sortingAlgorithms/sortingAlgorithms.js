@@ -31,7 +31,7 @@ function doMerge(mainArray, startIdx, middleIdx, endIdx, helpArray, animations) 
             animations.push([k, helpArray[i]]);
             mainArray[k++] = helpArray[i++];
         } else {
-            // We overwrite the value at index k in the orgininal array with the
+            // We overwrite the value at index k in the original array with the
             // value at index j in the help array
             animations.push([k, helpArray[j]]);
             mainArray[k++] = helpArray[j++];
@@ -41,25 +41,53 @@ function doMerge(mainArray, startIdx, middleIdx, endIdx, helpArray, animations) 
         // These are the values that we're comparing; we push them once
         // to change their color
         animations.push([i, i]);
-        // These aare the values that we're comparing; we push them a second
+        // These are the values that we're comparing; we push them a second
         // time to rever their color
         animations.push([i, i]);
-        // We overwrite the value at indeex k in the original array with the
+        // We overwrite the value at index k in the original array with the
         // value at index i in the help array
         animations.push([k, helpArray[i]]);
         mainArray[k++] = helpArray[i++];
     }
     while (j <= endIdx) {
-        // These aare the values that we're comparing; we push them a second
-        // time to rever their color
+        // These are the values that we're comparing; we push them a second
+        // time to revert their color
         animations.push([j, j]);
-        // These aare the values that we're comparing; we push them a second
-        // time to rever their color
+        // These are the values that we're comparing; we push them a second
+        // time to revert their color
         animations.push([j, j]);
-        // We overwrite the value at indeex k in the original array with the
+        // We overwrite the value at index k in the original array with the
         // value at index i in the help array
         animations.push([k, helpArray[j]]);
         mainArray[k++] = helpArray[j++];
     }
+}
+
+export const bubbleSortAnimations = (array) => {
+    const animations = [];
+    let swapped;
+    do {
+        swapped = false;
+        for (let i = 0; i < array.length - 1; i++) {
+            // Record the comparison
+            animations.push([i, i + 1]);
+            animations.push([i, i + 1]);
+            if (array[i] > array[i + 1]) {
+                // Swap the elements 
+                let temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+                swapped = true;
+                // Record the swap
+                animations.push([i, array[i]]);
+                animations.push([i + 1, array[i + 1]]);
+            } else {
+                // Record no swap
+                animations.push([i, array[i]]);
+                animations.push([i + 1, array[i + 1]]);
+            }
+        }
+    } while (swapped);
+    return animations;
 }
 

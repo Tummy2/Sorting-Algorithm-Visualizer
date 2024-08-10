@@ -1,12 +1,51 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: white; /* Optional: set background color for the body */
+}
+
 .array-container {
-    position: absolute;
-    left: 30px;
-    /* top: 100px; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Aligns bars to the bottom of the container */
+    margin-top: 5px; /* Adds whitespace above the container */
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60%; /* Adjust the height as needed */
+    width: 80%; /* Adjust the width as needed */
 }
 
 .array-bar {
     width: 2px;
     background-color: turquoise;
-    display: inline-block;
     margin: 0 1px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px; /* Adds space between the container and the buttons */
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    margin: 0 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid black; /* Optional: add border */
+    border-radius: 10px; /* Adjust the radius as needed */
+    background-color: white; /* Optional: button background color */
+    color: black; /* Optional: text color */
+    cursor: pointer; /* Optional: changes cursor to pointer on hover */
+}
+
+button:hover {
+    background-color: rgb(179, 169, 169); /* Optional: changes color on hover */
 }
