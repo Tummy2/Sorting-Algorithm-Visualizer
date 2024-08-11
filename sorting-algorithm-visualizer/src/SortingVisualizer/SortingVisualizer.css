@@ -50,3 +50,19 @@ button:hover {
     background-color: rgb(77, 77, 77); /* Optional: changes color on hover */
     color: white;
 }
+
+.sliderBar {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sliderBar input[type="range"] {
+    width: 300px;
+    margin: 10px 0;
+}
+
+.sliderBar label {
+    font-size: 14px;
+}

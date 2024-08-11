@@ -1,3 +1,4 @@
+// MERGE SORT ------------------------------------------------------------------------
 export const mergeSortAnimations = (array) => {
     const animations = [];
     if (array.length <= 1) return array;
@@ -63,6 +64,8 @@ function doMerge(mainArray, startIdx, middleIdx, endIdx, helpArray, animations) 
     }
 }
 
+
+// QUICK SORT ------------------------------------------------------------------------
 export const quickSortAnimations = (array) => {
     const animations = [];
     if (array.length <= 1) return array;
@@ -100,6 +103,8 @@ function partition(array, low, high, animations) {
     return i + 1;
 }
 
+
+// HEAP SORT ------------------------------------------------------------------------
 export const heapSortAnimations = (array) => {
     const animations = [];
     let n = array.length;
@@ -163,6 +168,8 @@ function heapify(array, n, i, animations) {
     return;
 }
 
+
+// BUBBLE SORT ------------------------------------------------------------------------
 export const bubbleSortAnimations = (array) => {
     const animations = [];
     let swapped;

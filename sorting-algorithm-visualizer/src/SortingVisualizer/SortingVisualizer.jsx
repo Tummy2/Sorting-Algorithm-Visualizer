@@ -6,7 +6,7 @@ import './SortingVisualizer.css';
 const ANIMATION_SPEED_MS = 1;
 
 // how many numbers in array to be sorted
-const NUMBER_OF_ARRAY_BARS = 200;
+// const NUMBER_OF_ARRAY_BARS = 200;
 
 export class SortingVisualizer extends React.Component {
     constructor(props) {
@@ -14,17 +14,19 @@ export class SortingVisualizer extends React.Component {
 
         this.state = {
             array: [],
+            arrayLength: 200
         };
     }
 
     // when the component is first loaded, call resetArray to load a new randomized array
     componentDidMount() {
-        this.resetArray();
+        this.resetArray(200);
     }
 
-    resetArray() {
+    resetArray(newLength) {
+        this.setState({ arrayLength : newLength });
         const array = [];
-        for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
+        for (let i = 0; i < this.state.arrayLength; i++) {
             array.push(randomIntFromInterval(5, 700));
         }
         this.setState({array})
@@ -135,11 +137,21 @@ export class SortingVisualizer extends React.Component {
                     ))}
                 </div>
                 <div className="button-container">
-                    <button onClick={() => this.resetArray()}>Generate New Array</button>
+                    <button onClick={() => this.resetArray(this.state.arrayLength)}>Generate New Array</button>
                     <button onClick={() => this.mergeSort()}>Merge Sort</button>
                     <button onClick={() => this.quickSort()}>Quick Sort</button>
                     <button onClick={() => this.heapSort()}>Heap Sort</button>
                     <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+                </div>
+                <div className="sliderBar">
+                    <input 
+                        type="range" 
+                        min="10" 
+                        max="600" 
+                        value={this.state.arrayLength} 
+                        onChange={(e) => this.resetArray(e.target.value)} 
+                    />
+                    <label>Array Length: {this.state.arrayLength}</label>
                 </div>
             </div>
         );
