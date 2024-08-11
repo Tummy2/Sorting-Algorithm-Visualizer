@@ -63,6 +63,43 @@ function doMerge(mainArray, startIdx, middleIdx, endIdx, helpArray, animations) 
     }
 }
 
+export const quickSortAnimations = (array) => {
+    const animations = [];
+    if (array.length <= 1) return array;
+    quickSortHelper(array, 0, array.length - 1, animations);
+    return animations
+}
+
+function quickSortHelper(array, low, high, animations) {
+    if (low < high) {
+        const pivotIndex = partition(array, low, high, animations);
+        quickSortHelper(array, low, pivotIndex - 1, animations);
+        quickSortHelper(array, pivotIndex + 1, high, animations)
+    }
+}
+
+function partition(array, low, high, animations) {
+    const pivot = array[high];
+    let i = low - 1;
+    for (let j = low; j < high; j++) {
+        // Comparison
+        animations.push([j, high, "red"]);
+        animations.push([j, high, "turquoise"]);
+        if (array[j] <= pivot) {
+            i++;
+            [array[i], array[j]] = [array[j], array[i]];
+            // Swap
+            animations.push([i, array[i], "swap"]);
+            animations.push([j, array[j], "swap"]);
+        }
+    }
+    [array[i + 1], array[high]] = [array[high], array[i + 1]];
+    // Swapping pivot
+    animations.push([i + 1, array[i + 1], "swap"]);
+    animations.push([high, array[high], "swap"]);
+    return i + 1;
+}
+
 export const heapSortAnimations = (array) => {
     const animations = [];
     let n = array.length;
