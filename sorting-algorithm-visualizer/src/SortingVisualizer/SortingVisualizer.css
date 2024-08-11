@@ -47,5 +47,6 @@ button {
 }
 
 button:hover {
-    background-color: rgb(179, 169, 169); /* Optional: changes color on hover */
+    background-color: rgb(77, 77, 77); /* Optional: changes color on hover */
+    color: white;
 }
